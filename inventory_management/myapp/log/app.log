@@ -1,2 +1,24 @@
 2024-09-29 23:13:55,797 INFO D:\react_Application_API\Django-Assignment-2\inventory_management\myapp\views.py changed, reloading.
 2024-09-29 23:14:03,883 INFO User testuser@example.com logged in successfully.
+2024-09-29 23:19:52,291 INFO User testuser is attempting to create an item.
+2024-09-29 23:19:52,297 INFO Item New Item created successfully by user testuser.
+2024-09-29 23:19:53,314 INFO User testuser is trying to delete item with ID 1.
+2024-09-29 23:19:53,315 INFO Item 1 deleted successfully.
+2024-09-29 23:19:54,243 INFO User testuser is trying to read item with ID 9999.
+2024-09-29 23:19:54,243 ERROR Item with ID 9999 not found for reading.
+2024-09-29 23:19:54,243 WARNING Not Found: /items/9999/
+2024-09-29 23:19:55,153 INFO User testuser is trying to read item with ID 1.
+2024-09-29 23:19:55,156 INFO Item 1 returned successfully to user testuser.
+2024-09-29 23:19:56,069 INFO User testuser is trying to update item with ID 1.
+2024-09-29 23:19:56,070 INFO Item 1 updated successfully.
+2024-09-29 23:20:12,921 INFO User testuser is attempting to create an item.
+2024-09-29 23:20:12,927 INFO Item New Item created successfully by user testuser.
+2024-09-29 23:20:13,789 INFO User testuser is trying to delete item with ID 1.
+2024-09-29 23:20:13,789 INFO Item 1 deleted successfully.
+2024-09-29 23:20:14,651 INFO User testuser is trying to read item with ID 9999.
+2024-09-29 23:20:14,651 ERROR Item with ID 9999 not found for reading.
+2024-09-29 23:20:14,651 WARNING Not Found: /items/9999/
+2024-09-29 23:20:15,623 INFO User testuser is trying to read item with ID 1.
+2024-09-29 23:20:15,623 INFO Item 1 returned successfully to user testuser.
+2024-09-29 23:20:16,989 INFO User testuser is trying to update item with ID 1.
+2024-09-29 23:20:16,989 INFO Item 1 updated successfully.
