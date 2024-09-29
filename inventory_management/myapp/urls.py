@@ -1,15 +1,11 @@
 from django.urls import path
-from . import views
-from .views import protected_view
+from .views import UserRegistrationView, UserLoginView, create_item, read_item, update_item, delete_item
 
 urlpatterns = [
-    path('get_items/', views.get_items, name='get_items'),
-    path('post_items/', views.post_items, name='post_items'),
-    path('put_items/', views.put_items, name='put_items'),
-    path('delete_items/', views.delete_items, name='delete_items'),
-    path('', views.home_page, name='home_page'),
-    path('api/protected/', protected_view, name='protected_view'),
-    
+    path('register/', UserRegistrationView.as_view(), name='register'),
+    path('login/', UserLoginView.as_view(), name='login'),
+    path('items/', create_item, name='create_item'),
+    path('items/<int:item_id>/', read_item, name='read_item'),
+    path('items/<int:item_id>/update/', update_item, name='update_item'),
+    path('items/<int:item_id>/delete/', delete_item, name='delete_item'),
 ]
-
-
