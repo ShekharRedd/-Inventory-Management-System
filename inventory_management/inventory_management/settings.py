@@ -13,6 +13,57 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from datetime import timedelta # import this library top of the settings.py file
 
+# settings.py
+# settings.py
+
+import os
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# # Logging Configuration
+# LOGGING = {
+#     'version': 1,  # Required
+#     'disable_existing_loggers': False,  # Keep the default loggers
+#     'formatters': {
+#         'verbose': {
+#             'format': '{levelname} {asctime} {module} {message}',
+#             'style': '{',
+#         },
+#         'simple': {
+#             'format': '{levelname} {message}',
+#             'style': '{',
+#         },
+#     },
+#     'handlers': {
+#         'file': {
+#             'level': 'ERROR',  # Log only errors to the file
+#             'class': 'logging.FileHandler',
+#             'filename': os.path.join(BASE_DIR, 'logs/django_error.log'),  # Ensure this path is correct
+#             'formatter': 'verbose',
+#         },
+#         'console': {
+#             'level': 'DEBUG',  # Log everything to the console
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'simple',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console', 'file'],
+#             'level': 'DEBUG',  # Log all messages at DEBUG level and above
+#             'propagate': True,
+#         },
+#         'myapp': {  # Custom logger for your app (replace 'myapp' with your app name)
+#             'handlers': ['console', 'file'],
+#             'level': 'DEBUG',  # Log all messages at DEBUG level and above
+#             'propagate': False,
+#         },
+#     },
+# }
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -28,15 +79,15 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME_LATE_USER': timedelta(days=30),
 }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',  # Redis server address and DB
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': 'redis://127.0.0.1:6379/1',  # Redis server address and DB
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
 
 # Optionally: set a timeout (e.g., 300 seconds = 5 minutes)
 CACHE_TTL = 300  # Time to live for cache in seconds
@@ -44,8 +95,7 @@ CACHE_TTL = 300  # Time to live for cache in seconds
 
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production

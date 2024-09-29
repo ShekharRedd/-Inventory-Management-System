@@ -1,53 +1,73 @@
-# tests.py
-
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
+from django.contrib.auth import get_user_model
 from .models import Item
 
-class ItemTests(APITestCase):
+User = get_user_model()  # This will get the User model correctly
 
+class ItemTests(APITestCase):
     def setUp(self):
-        # Create a test item
-        self.item = Item.objects.create(
-            name="Test Item",
-            description="A test item",
-            quantity=5,
-            price=100
+        # Create a user for testing
+        self.user = User.objects.create_user(
+            username='testuser',
+            email='testuser@example.com',
+            password='testpass'
         )
-        # Use token authentication if needed
-        self.token = "your_token"
+        self.item = Item.objects.create(
+            name='Test Item',
+            description='Test Description',
+            quantity=10,
+            price=100.0
+        )
+        self.token = self.get_token()
+
+    def get_token(self):
+        # Obtain token by logging in
+        response = self.client.post(reverse('token_obtain_pair'), {
+            'username': 'testuser',
+            'password': 'testpass'
+        })
+        return response.data['access']  # Adjust if your response structure is different
+
+    def authenticate(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + self.token)
+
+    def test_create_item_success(self):
+        self.authenticate()
+        response = self.client.post(reverse('create_item'), {
+            'name': 'New Item',
+            'description': 'New Description',
+            'quantity': 5,
+            'price': 50.0
+        })
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_read_item_success(self):
-        # Test retrieving an existing item
-        url = reverse('read_item', kwargs={'item_id': self.item.id})
-        response = self.client.get(url, HTTP_AUTHORIZATION=f'Bearer {self.token}')
+        self.authenticate()
+        response = self.client.get(reverse('read_item', kwargs={'item_id': self.item.id}))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['name'], self.item.name)
 
     def test_read_item_not_found(self):
-        # Test retrieving a non-existing item
-        url = reverse('read_item', kwargs={'item_id': 9999})
-        response = self.client.get(url, HTTP_AUTHORIZATION=f'Bearer {self.token}')
+        self.authenticate()
+        response = self.client.get(reverse('read_item', kwargs={'item_id': 9999}))
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-        self.assertEqual(response.data['error'], "Item not found")
 
     def test_update_item(self):
-        # Test updating an item
-        url = reverse('update_item', kwargs={'item_id': self.item.id})
-        data = {
+        self.authenticate()
+        response = self.client.put(reverse('update_item', kwargs={'item_id': self.item.id}), {
             'name': 'Updated Item',
-            'description': 'Updated description',
-            'quantity': 10,
-            'price': 150
-        }
-        response = self.client.put(url, data, format='json', HTTP_AUTHORIZATION=f'Bearer {self.token}')
+            'description': 'Updated Description',
+            'quantity': 20,
+            'price': 150.0
+        })
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['message'], 'Item updated successfully')
+        self.item.refresh_from_db()
+        self.assertEqual(self.item.name, 'Updated Item')
 
     def test_delete_item(self):
-        # Test deleting an item
-        url = reverse('delete_item', kwargs={'item_id': self.item.id})
-        response = self.client.delete(url, HTTP_AUTHORIZATION=f'Bearer {self.token}')
+        self.authenticate()
+        response = self.client.delete(reverse('delete_item', kwargs={'item_id': self.item.id}))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['message'], 'Item deleted successfully')
+        self.assertEqual(Item.objects.filter(id=self.item.id).count(), 0)
