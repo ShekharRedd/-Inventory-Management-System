@@ -1,0 +1,50 @@
+
+1. views.py
+views.py is where you define what happens when a user requests a particular page.
+It contains Python functions or classes (called views) that decide which data to display, which template (HTML) to show, or how to respond to a request.
+2. urls.py
+urls.py is where you define which URL (web address) should trigger a particular view.
+You create URL patterns that map specific URLs to the views you defined in views.py.
+
+
+1. create models 
+
+> models means tables to create 
+> After wrting the code we have to execute the makemigrate
+py manage.py makemigrations members
+Note that Django inserts an id field for your tables, which is an auto increment number (first record gets the value 1, the second record 2 etc.), this is the default behavior of Django, you can override it by describing your own id field.
+
+
+The table is not created yet, you will have to run one more command, then Django will create and execute an SQL statement, based on the content of the new file in the /migrations/ folder.
+
+
+
+Here it is not create table but it make all necesary creationg before to create a table 
+
+py manage.py migrate
+
+
+
+JWT Integration : 
+
+1. install dependency 
+
+2. Configure in project setting.py  we need to add the some setting to ensure it will work 
+
+POST /api/token/ HTTP/1.1 Content-Type: application/json
+{
+  "username": "testuser",
+  "password": "password123"
+}
+
+
+
+Step 4: Add user registration and login functionality using JWT.
+
+1. Create user model 
+2. Create the view functions with get method, post method,  put method and delete method with JWT authentication. 
+
+
+
+In Django, serializers are used to convert data from JSON format (sent by users) into Python objects (that the server can understand).
+
