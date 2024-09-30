@@ -24,3 +24,79 @@
 2024-09-29 23:20:16,989 INFO Item 1 updated successfully.
 2024-09-30 10:38:53,339 WARNING Not Found: /
 2024-09-30 10:38:53,425 WARNING Not Found: /favicon.ico
+2024-09-30 10:42:08,599 WARNING User registration failed: {'username': [ErrorDetail(string='user with this username already exists.', code='unique')], 'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}.
+2024-09-30 10:42:08,600 WARNING Bad Request: /register/
+2024-09-30 10:43:57,090 INFO User shekhar registered successfully.
+2024-09-30 10:44:01,925 INFO User shekhar@example.com logged in successfully.
+2024-09-30 10:44:14,790 WARNING Unauthorized: /items/
+2024-09-30 10:45:08,685 INFO D:\react_Application_API\Django-Assignment-2\inventory_management\myapp\urls.py changed, reloading.
+2024-09-30 10:45:24,158 INFO User shekhar@example.com logged in successfully.
+2024-09-30 10:45:54,571 WARNING Unauthorized: /items/
+2024-09-30 10:46:43,362 INFO User testuser is attempting to create an item.
+2024-09-30 10:46:43,376 INFO Item New Item created successfully by user testuser.
+2024-09-30 10:46:44,296 INFO User testuser is trying to delete item with ID 1.
+2024-09-30 10:46:44,296 INFO Item 1 deleted successfully.
+2024-09-30 10:46:45,211 INFO User testuser is trying to read item with ID 9999.
+2024-09-30 10:46:45,211 ERROR Item with ID 9999 not found for reading.
+2024-09-30 10:46:45,212 WARNING Not Found: /items/9999/
+2024-09-30 10:46:46,093 INFO User testuser is trying to read item with ID 1.
+2024-09-30 10:46:46,094 INFO Item 1 returned successfully to user testuser.
+2024-09-30 10:46:46,951 INFO User testuser is trying to update item with ID 1.
+2024-09-30 10:46:46,951 INFO Item 1 updated successfully.
+2024-09-30 10:48:51,815 INFO User testuser registered successfully.
+2024-09-30 10:48:57,805 INFO User testuser@example.com logged in successfully.
+2024-09-30 10:49:13,450 WARNING Unauthorized: /items/
+2024-09-30 10:51:18,677 WARNING User registration failed: {'username': [ErrorDetail(string='user with this username already exists.', code='unique')], 'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}.
+2024-09-30 10:51:18,677 WARNING Bad Request: /register/
+2024-09-30 10:51:22,476 INFO User testuser@example.com logged in successfully.
+2024-09-30 10:51:38,575 INFO User shekhar is attempting to create an item.
+2024-09-30 10:51:38,576 ERROR Invalid data provided by user shekhar: {'price': [ErrorDetail(string='This field is required.', code='required')]}.
+2024-09-30 10:51:38,577 WARNING Bad Request: /items/
+2024-09-30 10:57:56,314 INFO User shekhar is attempting to create an item.
+2024-09-30 10:57:56,347 INFO Item Sample Item created successfully by user shekhar.
+2024-09-30 11:17:11,109 INFO User shekhar is attempting to create an item.
+2024-09-30 11:17:11,128 ERROR Invalid data provided by user shekhar: {'name': [ErrorDetail(string='item with this name already exists.', code='unique')]}.
+2024-09-30 11:17:11,130 WARNING Bad Request: /items/
+2024-09-30 11:17:28,647 INFO User shekhar is trying to update item with ID 1.
+2024-09-30 11:17:28,670 INFO Item 1 updated successfully.
+2024-09-30 11:17:34,628 WARNING Unauthorized: /items/1/delete/
+2024-09-30 11:17:54,449 INFO User shekhar is trying to delete item with ID 1.
+2024-09-30 11:17:54,470 INFO Item 1 deleted successfully.
+2024-09-30 11:18:41,382 WARNING Unauthorized: /items/1/
+2024-09-30 11:19:02,841 INFO User shekhar is trying to read item with ID 1.
+2024-09-30 11:19:02,842 ERROR Item with ID 1 not found for reading.
+2024-09-30 11:19:02,843 WARNING Not Found: /items/1/
+2024-09-30 11:29:15,236 INFO User shekhar registered successfully.
+2024-09-30 11:29:20,823 INFO User shekhar@example.com logged in successfully.
+2024-09-30 11:29:34,387 WARNING Unauthorized: /items/
+2024-09-30 11:30:05,979 WARNING Unauthorized: /items/1/update/
+2024-09-30 11:30:06,159 WARNING Unauthorized: /items/
+2024-09-30 11:33:01,298 INFO User shekhar@example.com logged in successfully.
+2024-09-30 11:33:20,305 WARNING Unauthorized: /items/
+2024-09-30 11:33:28,143 WARNING Unauthorized: /items/
+2024-09-30 11:33:48,041 WARNING User registration failed: {'username': [ErrorDetail(string='user with this username already exists.', code='unique')], 'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}.
+2024-09-30 11:33:48,042 WARNING Bad Request: /register/
+2024-09-30 11:33:56,282 INFO User shekhar@example.com logged in successfully.
+2024-09-30 11:34:19,704 WARNING Unauthorized: /items/1/
+2024-09-30 11:37:26,652 INFO User shekhar registered successfully.
+2024-09-30 11:37:31,033 INFO User shekhar@example.com logged in successfully.
+2024-09-30 11:37:42,107 WARNING Unauthorized: /items/
+2024-09-30 11:38:06,858 INFO User testuser registered successfully.
+2024-09-30 11:38:21,583 INFO User testuser@example.com logged in successfully.
+2024-09-30 11:38:38,618 WARNING Unauthorized: /items/
+2024-09-30 11:41:20,709 WARNING Unauthorized: /items/
+2024-09-30 11:43:44,195 WARNING User registration failed: {'username': [ErrorDetail(string='user with this username already exists.', code='unique')], 'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}.
+2024-09-30 11:43:44,195 WARNING Bad Request: /register/
+2024-09-30 11:43:58,571 WARNING Invalid password for user shekhar@example.com.
+2024-09-30 11:43:58,571 WARNING Bad Request: /login/
+2024-09-30 11:44:17,086 WARNING Invalid password for user shekhar@example.com.
+2024-09-30 11:44:17,086 WARNING Bad Request: /login/
+2024-09-30 11:44:33,497 WARNING User registration failed: {'username': [ErrorDetail(string='user with this username already exists.', code='unique')], 'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}.
+2024-09-30 11:44:33,497 WARNING Bad Request: /register/
+2024-09-30 11:44:53,497 INFO User sampleuser registered successfully.
+2024-09-30 11:45:11,106 INFO User sampleuser@example.com logged in successfully.
+2024-09-30 11:45:38,191 WARNING Unauthorized: /items/
+2024-09-30 11:46:54,642 INFO User testuser registered successfully.
+2024-09-30 11:47:01,982 INFO User testuser@example.com logged in successfully.
+2024-09-30 11:47:19,069 WARNING Unauthorized: /items/
+2024-09-30 11:47:39,139 INFO D:\react_Application_API\Django-Assignment-2\inventory_management\myapp\views.py changed, reloading.
