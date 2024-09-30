@@ -22,3 +22,5 @@
 2024-09-29 23:20:15,623 INFO Item 1 returned successfully to user testuser.
 2024-09-29 23:20:16,989 INFO User testuser is trying to update item with ID 1.
 2024-09-29 23:20:16,989 INFO Item 1 updated successfully.
+2024-09-30 10:38:53,339 WARNING Not Found: /
+2024-09-30 10:38:53,425 WARNING Not Found: /favicon.ico
