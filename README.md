@@ -114,7 +114,7 @@ This API uses JSON Web Token (JWT) authentication. To access most endpoints, use
       "password": "your_password"
   }
  
-###User Login and Token Generation
+### User Login and Token Generation
 
 - **Endpoint**: `/login/`
 - **Method**: `POST`
