@@ -95,3 +95,196 @@ To run this project, ensure you have the following installed:
 
    
    python manage.py createsuperuser
+
+
+
+## Authentication (JWT)  
+
+This API uses JSON Web Token (JWT) authentication. To access most endpoints, users need to provide a valid JWT token. You can register new users and obtain tokens as described below.  
+
+### User Registration  
+
+- **Endpoint**: `/register/`
+- **Method**: `POST`
+- **Request Body**: 
+  json
+  {
+      "username": "your_username",
+      "email": "your_email",
+      "password": "your_password"
+  }
+ 
+###User Login and Token Generation
+
+- **Endpoint**: `/login/`
+- **Method**: `POST`
+- **Request Body**:  
+  json
+  {
+      "email": "your_email",
+      "password": "your_password"
+  }
+  
+
+- **Response**: 
+  json
+  {
+      "refresh": "refresh_token_here",
+      "access": "access_token_here"
+  }
+  
+
+- Use the `access` token in the Authorization header for authenticated requests:
+  http
+  Authorization: Bearer <your_access_token>
+
+
+
+## API Endpoints
+
+### Create Item
+
+- **Method**: `POST`
+- **URL**: `/items/`
+- **Request Body**: 
+  json
+  {
+      "name": "item_name",
+      "description": "item_description",
+      "quantity": 10,
+      "price": 50.00
+  }
+  
+- **Response**:
+  json
+  {
+      "id": 1,
+      "name": "item_name",
+      "description": "item_description",
+      "quantity": 10,
+      "price": 50.00
+  }
+  
+- **Error Codes**:
+  - `400`: Item already exists.
+
+### Read Item
+
+- **Method**: `GET`
+- **URL**: `/items/{item_id}/`
+- **Response**:
+  json
+  {
+      "id": 1,
+      "name": "item_name",
+      "description": "item_description",
+      "quantity": 10,
+      "price": 50.00
+  }
+  
+- **Error Codes**:
+  - `404`: Item not found.
+
+### Update Item
+
+- **Method**: `PUT`
+- **URL**: `/items/{item_id}/`
+- **Request Body**:
+  json
+  {
+      "name": "updated_item_name",
+      "description": "updated_item_description",
+      "quantity": 20,
+      "price": 100.00
+  }
+  
+- **Response**:
+  json
+  {
+      "id": 1,
+      "name": "updated_item_name",
+      "description": "updated_item_description",
+      "quantity": 20,
+      "price": 100.00
+  }
+  
+- **Error Codes**:
+  - `404`: Item not found.
+
+### Delete Item
+
+- **Method**: `DELETE`
+- **URL**: `/items/{item_id}/`
+- **Response**: 
+  json
+  {
+      "message": "Item deleted successfully."
+  }
+  
+- **Error Codes**:
+  - `404`: Item not found.
+
+
+## Redis Caching
+
+To improve performance, items are cached in Redis. When a user accesses an item for the first time, it is stored in the cache. Subsequent requests for the same item will retrieve the data from Redis instead of querying the database.
+
+- Redis is automatically used in the `GET /items/{item_id}/` endpoint for cached data.
+
+
+## Logging
+
+The project integrates logging to track errors and API usage. Logs are stored in the `logs/app.log` file, where significant events are recorded, such as:
+
+- API requests
+- User login and registration
+- Item CRUD operations
+- Errors and exceptions
+
+### Logging Configuration Example:
+python
+import logging
+import os
+
+log_dir = os.path.join(os.path.dirname(__file__), 'logs')
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+logging.basicConfig(
+    filename=os.path.join(log_dir, 'app.log'),
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s'
+)
+
+
+
+## Unit Testing
+
+Unit tests are provided for all API endpoints, including both successful and error cases. To run the tests:
+
+
+python manage.py test
+
+
+Test cases cover:
+
+- User registration and login
+- JWT authentication
+- Item CRUD operations
+- Redis caching
+- Error handling
+
+
+## Technologies Used
+
+- **Backend**: Django Rest Framework (DRF)
+- **Database**: PostgreSQL
+- **Caching**: Redis
+- **Authentication**: JWT (JSON Web Token)
+- **Logging**: Python's logging library
+
+
+
+## Conclusion
+
+This documentation provides a complete overview of the Inventory Management System, covering setup, API usage, authentication, caching, logging, and testing. Follow the steps mentioned to install, run, and test the project, and feel free to contribute.
